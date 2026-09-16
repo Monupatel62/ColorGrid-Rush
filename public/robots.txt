@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monupatel62.github.io/ColorGrid-Rush/sitemap.xml

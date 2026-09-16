@@ -1,0 +1,17 @@
+{
+  "name": "ColorGrid Rush",
+  "short_name": "ColorGrid Rush",
+  "description": "A free match-3 puzzle game with colorful gems, combo blasts, and 10 handcrafted levels.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

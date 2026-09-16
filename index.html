@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ════════════════════════════════════════════════════════
+       PRIMARY META
+  ════════════════════════════════════════════════════════ -->
+  <title>ColorGrid Rush: Free Match-3 Puzzle Game Online</title>
+  <meta name="description"
+      content="Play ColorGrid Rush, a free online match-3 puzzle game. Match colorful gems, trigger combo blasts, and clear 10 handcrafted levels on desktop or mobile." />
+  <meta name="author"       content="ColorGrid Rush" />
+  <meta name="robots"       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color"  content="#0d1117" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Canonical URL (update to your actual domain before publishing) -->
+  <link rel="canonical" href="https://monupatel62.github.io/ColorGrid-Rush/" />
+
+  <!-- ════════════════════════════════════════════════════════
+       OPEN GRAPH  (Facebook, WhatsApp, LinkedIn, Discord)
+  ════════════════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://monupatel62.github.io/ColorGrid-Rush/" />
+  <meta property="og:title"       content="ColorGrid Rush: Free Match-3 Puzzle Game" />
+  <meta property="og:description" content="Match colorful gems, create explosive combos, and clear 10 handcrafted levels in your browser." />
+  <meta property="og:image"       content="https://monupatel62.github.io/ColorGrid-Rush/og-image.svg" />
+  <meta property="og:image:alt"   content="ColorGrid Rush colorful gem puzzle board" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:site_name"   content="ColorGrid Rush" />
+
+  <!-- ════════════════════════════════════════════════════════
+       TWITTER / X CARDS
+  ════════════════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="https://monupatel62.github.io/ColorGrid-Rush/" />
+  <meta name="twitter:title"       content="ColorGrid Rush: Free Match-3 Puzzle Game" />
+  <meta name="twitter:description" content="Match colorful gems, create explosive combos, and clear 10 handcrafted levels in your browser." />
+  <meta name="twitter:image"       content="https://monupatel62.github.io/ColorGrid-Rush/og-image.svg" />
+  <meta name="twitter:image:alt"   content="ColorGrid Rush game screenshot" />
+
+  <!-- ════════════════════════════════════════════════════════
+       PWA / MOBILE APP META
+  ════════════════════════════════════════════════════════ -->
+  <meta name="apple-mobile-web-app-capable"          content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title"            content="ColorGrid Rush" />
+  <meta name="application-name"                      content="ColorGrid Rush" />
+  <meta name="mobile-web-app-capable"                content="yes" />
+
+  <!-- Favicon family -->
+  <link rel="icon"             type="image/svg+xml"              href="/favicon.svg" />
+  <link rel="manifest"                                         href="/site.webmanifest" />
+  <link rel="help"                                            href="/how-to-play.html" />
+
+  <!-- ════════════════════════════════════════════════════════
+       STRUCTURED DATA  (Google Rich Results)
+  ════════════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "ColorGrid Rush",
+    "alternateName": "ColorGrid Rush Match-3",
+    "description": "ColorGrid Rush is a free online match-3 puzzle game. Match colorful gems, trigger explosive combos, blast special tiles, and clear 10 handcrafted levels on desktop or mobile.",
+    "url": "https://monupatel62.github.io/ColorGrid-Rush/",
+    "image": "https://monupatel62.github.io/ColorGrid-Rush/og-image.svg",
+    "genre": ["Puzzle", "Casual", "Match-3"],
+    "playMode": "SinglePlayer",
+    "applicationCategory": "Game",
+    "operatingSystem": ["Web Browser", "Android"],
+    "inLanguage": "en",
+    "isFamilyFriendly": true,
+    "numberOfPlayers": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 1
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "8 by 8 match-3 board",
+      "Special tiles and combo blasts",
+      "10 handcrafted puzzle levels",
+      "Desktop and Android support"
+    ]
+  }
+  </script>
+
+  <!-- ════════════════════════════════════════════════════════
+       PERFORMANCE — PRECONNECT + FONT
+  ════════════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    :root {
+      --bg-deep:      #0d1117;
+      --bg-panel:     #0f172a;
+      --bg-card:      #1e293b;
+      --border:       #334155;
+      --accent:       #38bdf8;
+      --accent2:      #8b5cf6;
+      --text-primary: #f8fafc;
+      --text-muted:   #94a3b8;
+      --text-dim:     #64748b;
+      --gold:         #f59e0b;
+      --green:        #10b981;
+      --red:          #ef4444;
+    }
+
+    html, body {
+      width:    100%;
+      height:   100%;
+      overflow: hidden;
+      background: var(--bg-deep);
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-primary);
+    }
+
+    /* ════════════════════════════════════════════
+       BASE (mobile portrait — no media query)
+       #app-shell fills the full viewport.
+       #game-canvas-wrap fills #app-shell.
+       Phaser RESIZE mode fills the container
+       automatically — we do NOT force canvas size.
+    ════════════════════════════════════════════ */
+
+    #app-shell {
+      position: fixed;       /* always covers the whole screen */
+      inset: 0;              /* top/right/bottom/left: 0        */
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(ellipse at 50% 0%,  #1b2a4a 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 100%, #1a1040 0%, transparent 55%),
+        var(--bg-deep);
+      overflow: hidden;
+    }
+
+    /* Desktop chrome — hidden on mobile */
+    #desktop-topbar { display: none; }
+    #desktop-main   { display: none; }
+
+    /* Mobile: canvas host fills the entire shell */
+    #game-canvas-wrap {
+      position: absolute;
+      inset: 0;              /* covers full app-shell */
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Let Phaser manage canvas size completely.
+       Only apply cosmetic rules that don't override dimensions. */
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      outline: none;
+    }
+
+    /* ════════════════════════════════════════════
+       DESKTOP  ≥ 960 px
+    ════════════════════════════════════════════ */
+    @media (min-width: 960px) {
+
+      #desktop-topbar { display: flex; }
+      #desktop-main   { display: flex; }
+
+      /* Canvas host is no longer position:absolute on desktop */
+      #game-canvas-wrap {
+        position: static;
+        inset: auto;
+        flex: 1 1 0;
+        width: 100%;
+        max-width: 980px;
+        min-width: 0;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        overflow: hidden;
+      }
+
+      /* On desktop let Phaser resize freely, just add visual polish */
+      canvas {
+        border-radius: 12px;
+        box-shadow:
+          0 6px 60px rgba(0,0,0,0.85),
+          0 0 0 1px rgba(56,189,248,0.13);
+      }
+
+      /* ── Top navigation bar ── */
+      #desktop-topbar {
+        width: 100%;
+        height: 56px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        background: rgba(15,23,42,0.96);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        z-index: 20;
+      }
+
+      #topbar-logo {
+        font-size: 20px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #38bdf8 30%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      #topbar-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .topbar-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
+        white-space: nowrap;
+      }
+      .topbar-btn:hover {
+        background: #1e3a5f;
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ── 3-column layout ── */
+      #desktop-main {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        align-items: stretch;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* Menus use the full canvas; side stats belong to active gameplay. */
+      .menu-mode #desktop-main {
+        display: block;
+      }
+      .menu-mode #panel-left,
+      .menu-mode #panel-right {
+        display: none;
+      }
+      .menu-mode #game-canvas-wrap {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        padding: 0;
+      }
+
+      .side-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 220px;
+        min-width: 220px;
+        max-width: 240px;
+        flex-shrink: 0;
+        padding: 12px 12px;
+        background: rgba(15,23,42,0.85);
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+      }
+      .side-panel::-webkit-scrollbar       { width: 4px; }
+      .side-panel::-webkit-scrollbar-track { background: transparent; }
+      .side-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+      #panel-left  { border-right: 1px solid var(--border); }
+      #panel-right { border-left:  1px solid var(--border); }
+    }
+
+    /* ── 1280 px+ ── */
+    @media (min-width: 1280px) {
+      .side-panel  { width: 240px; min-width: 240px; padding: 20px 18px; }
+      #topbar-logo { font-size: 22px; }
+    }
+
+    /* ── 1920 px+ ── */
+    @media (min-width: 1920px) {
+      .side-panel     { width: 260px; min-width: 260px; padding: 24px 20px; gap: 14px; }
+      #desktop-topbar { height: 62px; padding: 0 36px; }
+      #topbar-logo    { font-size: 24px; }
+      .topbar-btn     { font-size: 14px; padding: 7px 20px; }
+    }
+
+    /* ════════════════════════════════════════════
+       SIDE PANEL COMPONENTS
+    ════════════════════════════════════════════ */
+
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 13px;
+      flex-shrink: 0;
+    }
+
+    .panel-card-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .panel-card-value {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+    .panel-card-value.accent { color: var(--accent); }
+    .panel-card-value.gold   { color: var(--gold);   }
+    .panel-card-value.green  { color: var(--green);  }
+    .panel-card-value.red    { color: var(--red);    }
+
+    @keyframes score-flash {
+      0%   { transform: scale(1);    color: var(--accent); }
+      30%  { transform: scale(1.15); color: #7dd3fc; }
+      100% { transform: scale(1);    color: var(--accent); }
+    }
+    .score-flash { animation: score-flash 0.35s ease-out forwards; }
+
+    .panel-section-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 6px;
+      flex-shrink: 0;
+    }
+
+    #desktop-objectives {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .obj-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 9px;
+      background: rgba(15,23,42,0.65);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .obj-item.done {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .obj-icon       { width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0;
+                       display: flex; align-items: center; justify-content: center; font-size: 15px; }
+    .obj-text-wrap  { flex: 1; min-width: 0; }
+    .obj-name       { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .obj-progress   { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+    .stars-row      { display: flex; gap: 6px; align-items: center; margin-top: 3px; }
+    .star           { font-size: 22px; transition: transform 0.2s, color 0.2s; }
+    .star.filled    { color: var(--gold);   }
+    .star.empty     { color: var(--border); }
+
+    .panel-divider  { height: 1px; background: var(--border); border: none; flex-shrink: 0; }
+
+    .panel-btn {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 10px;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: 0.4px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+      flex-shrink: 0;
+    }
+    .panel-btn:hover {
+      background: #1e3a5f;
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .panel-btn.danger:hover {
+      background: #2d1515;
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+    .toggle-label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+
+    .toggle-switch {
+      width: 42px; height: 23px;
+      background: var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .toggle-switch.on { background: var(--green); }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 17px; height: 17px;
+      background: white;
+      border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    .toggle-switch.on::after { transform: translateX(19px); }
+
+    .howto-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-shrink: 0;
+    }
+    .howto-card p { margin: 1px 0; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <main>
+      <h1>ColorGrid Rush: Free Match-3 Puzzle Game</h1>
+      <p>Match colorful gems, trigger special tile combos, and complete 10 handcrafted puzzle levels.</p>
+      <p>JavaScript is required to play ColorGrid Rush in your browser.</p>
+    </main>
+  </noscript>
+  <div id="app-shell" class="menu-mode">
+
+    <!-- DESKTOP ONLY: top bar -->
+    <header id="desktop-topbar">
+      <div id="topbar-logo">💎 COLORGRID RUSH</div>
+      <div id="topbar-actions">
+        <button class="topbar-btn" id="btn-menu">⬅ MAIN MENU</button>
+        <button class="topbar-btn" id="btn-levels">📋 LEVELS</button>
+        <button class="topbar-btn" id="btn-settings">⚙ SETTINGS</button>
+        <a class="topbar-btn" href="./how-to-play.html">HOW TO PLAY</a>
+      </div>
+    </header>
+
+    <!-- DESKTOP ONLY: 3-column layout -->
+    <div id="desktop-main">
+
+      <!-- Left panel -->
+      <aside class="side-panel" id="panel-left">
+        <div class="panel-card">
+          <div class="panel-card-label">Score</div>
+          <div class="panel-card-value accent" id="desktop-score">0</div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-card-label">Moves Left</div>
+          <div class="panel-card-value" id="desktop-moves">—</div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-card-label">Stars</div>
+          <div class="stars-row" id="desktop-stars">
+            <span class="star empty">★</span>
+            <span class="star empty">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <hr class="panel-divider">
+        <div class="panel-section-title">Controls</div>
+        <button class="panel-btn" id="panel-btn-pause">⏸ PAUSE</button>
+        <button class="panel-btn" id="panel-btn-restart">↺ RESTART LEVEL</button>
+        <button class="panel-btn danger" id="panel-btn-menu">⬅ MAIN MENU</button>
+      </aside>
+
+      <!-- Centre: Phaser canvas injected here by JS below -->
+      <div id="game-canvas-wrap"></div>
+
+      <!-- Right panel -->
+      <aside class="side-panel" id="panel-right">
+        <div class="panel-card">
+          <div class="panel-card-label">Level</div>
+          <div class="panel-card-value gold" id="desktop-level">—</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:5px;font-weight:700;" id="desktop-level-name"></div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-card-label">Personal Best</div>
+          <div class="panel-card-value" id="desktop-best">0</div>
+        </div>
+        <div>
+          <div class="panel-section-title">Objectives</div>
+          <div id="desktop-objectives">
+            <div style="font-size:12px;color:var(--text-dim);padding:4px 0;">Start a level to see objectives.</div>
+          </div>
+        </div>
+        <hr class="panel-divider">
+        <div class="panel-section-title">Audio</div>
+        <div class="toggle-row">
+          <span class="toggle-label">Sound FX</span>
+          <div class="toggle-switch on" id="toggle-sfx"></div>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-label">Music</span>
+          <div class="toggle-switch on" id="toggle-music"></div>
+        </div>
+        <hr class="panel-divider">
+        <div class="howto-card">
+          <div class="panel-section-title" style="margin-bottom:6px;">How To Play</div>
+          <p>🔄 <b>Swap</b> two adjacent gems.</p>
+          <p>💥 <b>Match 3+</b> in a row to clear.</p>
+          <p>⚡ <b>4-in-row</b> → Line Blaster.</p>
+          <p>💣 <b>T / L shape</b> → Area Bomb.</p>
+          <p>🌈 <b>5-in-row</b> → Rainbow Gem.</p>
+        </div>
+      </aside>
+
+    </div><!-- /#desktop-main -->
+
+  </div><!-- /#app-shell -->
+
+  <script type="module" src="/src/main.ts"></script>
+
+  <script>
+    /* ════════════════════════════════════════════════════════
+       LAYOUT BRIDGE
+       Key rule: on MOBILE the canvas wrap is position:absolute
+       covering the full viewport — Phaser RESIZE fills it.
+       On DESKTOP it moves inside #desktop-main as a flex child.
+    ════════════════════════════════════════════════════════ */
+
+    var DESKTOP_BP = 960;
+
+    function isDesktopLayout() {
+      return window.innerWidth >= DESKTOP_BP;
+    }
+
+    function ensureCanvasParent() {
+      var wrap      = document.getElementById('game-canvas-wrap');
+      var main      = document.getElementById('desktop-main');
+      var shell     = document.getElementById('app-shell');
+      if (!wrap || !main || !shell) return;
+
+      if (isDesktopLayout()) {
+        if (wrap.parentElement !== main) {
+          var panelRight = document.getElementById('panel-right');
+          main.insertBefore(wrap, panelRight);
+        }
+        // Desktop: remove absolute positioning so it behaves as flex child
+        wrap.style.position = '';
+        wrap.style.inset    = '';
+      } else {
+        if (wrap.parentElement !== shell) {
+          shell.appendChild(wrap);
+        }
+        // Mobile: absolutely cover the full shell
+        wrap.style.position = 'absolute';
+        wrap.style.inset    = '0';
+      }
+    }
+
+    /* ── ColorGridBridge: Phaser → DOM ── */
+    window.ColorGridBridge = {
+      setDesktopMode: function(mode) {
+        var shell = document.getElementById('app-shell');
+        if (!shell) return;
+        shell.classList.toggle('menu-mode', mode !== 'play');
+        shell.classList.toggle('play-mode', mode === 'play');
+      },
+      updateScore: function(score) {
+        var el = document.getElementById('desktop-score');
+        if (el) {
+          el.textContent = Number(score).toLocaleString();
+          // Flash animation on score update
+          el.classList.remove('score-flash');
+          void el.offsetWidth; // reflow to restart animation
+          el.classList.add('score-flash');
+        }
+      },
+      updateMoves: function(moves) {
+        var el = document.getElementById('desktop-moves');
+        if (el) {
+          el.textContent = moves;
+          el.className = 'panel-card-value ' + (Number(moves) <= 5 ? 'red' : '');
+        }
+      },
+      updateStars: function(stars) {
+        document.querySelectorAll('#desktop-stars .star').forEach(function(s, i) {
+          s.className = 'star ' + (i < stars ? 'filled' : 'empty');
+        });
+      },
+      updateLevel: function(id, name) {
+        var lvlEl  = document.getElementById('desktop-level');
+        var nameEl = document.getElementById('desktop-level-name');
+        if (lvlEl)  lvlEl.textContent  = id;
+        if (nameEl) nameEl.textContent = name;
+      },
+      updateObjectives: function(objectives) {
+        var c = document.getElementById('desktop-objectives');
+        if (!c) return;
+        c.innerHTML = '';
+        objectives.forEach(function(obj) {
+          var done  = obj.current >= obj.target;
+          var icons = { score: '⭐', collect_color: '💎', clear_ice: '🧊' };
+          var icon  = icons[obj.type] || '🎯';
+          var div   = document.createElement('div');
+          div.className = 'obj-item' + (done ? ' done' : '');
+          div.innerHTML =
+            '<div class="obj-icon">' + icon + '</div>' +
+            '<div class="obj-text-wrap">' +
+              '<div class="obj-name">'     + obj.label + '</div>' +
+              '<div class="obj-progress">' + (done ? '✓ Complete' : obj.current + ' / ' + obj.target) + '</div>' +
+            '</div>';
+          c.appendChild(div);
+        });
+      },
+      updateBest: function(score) {
+        var el = document.getElementById('desktop-best');
+        if (el) el.textContent = Number(score).toLocaleString();
+      },
+      onPauseClick:    null,
+      onRestartClick:  null,
+      onMenuClick:     null,
+      onLevelsClick:   null,
+      onSettingsClick: null,
+      onSfxToggle:     null,
+      onMusicToggle:   null
+    };
+
+    /* ── Wire buttons ── */
+    function wire(id, fn) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', fn);
+    }
+    wire('panel-btn-pause',   function() { if (window.ColorGridBridge.onPauseClick)    window.ColorGridBridge.onPauseClick();    });
+    wire('panel-btn-restart', function() { if (window.ColorGridBridge.onRestartClick)  window.ColorGridBridge.onRestartClick();  });
+    wire('panel-btn-menu',    function() { if (window.ColorGridBridge.onMenuClick)     window.ColorGridBridge.onMenuClick();     });
+    wire('btn-menu',          function() { if (window.ColorGridBridge.onMenuClick)     window.ColorGridBridge.onMenuClick();     });
+    wire('btn-levels',        function() { if (window.ColorGridBridge.onLevelsClick)   window.ColorGridBridge.onLevelsClick();   });
+    wire('btn-settings',      function() { if (window.ColorGridBridge.onSettingsClick) window.ColorGridBridge.onSettingsClick(); });
+
+    wire('toggle-sfx', function() {
+      var el = document.getElementById('toggle-sfx');
+      el.classList.toggle('on');
+      if (window.ColorGridBridge.onSfxToggle) window.ColorGridBridge.onSfxToggle(el.classList.contains('on'));
+    });
+    wire('toggle-music', function() {
+      var el = document.getElementById('toggle-music');
+      el.classList.toggle('on');
+      if (window.ColorGridBridge.onMusicToggle) window.ColorGridBridge.onMusicToggle(el.classList.contains('on'));
+    });
+
+    window.addEventListener('resize', ensureCanvasParent);
+    document.addEventListener('DOMContentLoaded', ensureCanvasParent);
+    ensureCanvasParent();
+  </script>
+</body>
+</html>
