@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { TileColor, SpecialType } from '../data/colors';
+import { SaveManager } from '../systems/SaveManager';
 
 export class Tile extends Phaser.GameObjects.Container {
   public gridRow:   number;
@@ -158,6 +159,14 @@ export class Tile extends Phaser.GameObjects.Container {
   }
 
   public animatePop(onComplete?: () => void): void {
+    const reducedMotion = SaveManager.getInstance().getData().settings.reducedMotion;
+    if (reducedMotion) {
+      this.alpha = 0;
+      if (onComplete) onComplete();
+      this.destroy();
+      return;
+    }
+
     // Brief scale-up flash, then pop out — more satisfying than a plain shrink
     this.scene.tweens.add({
       targets:  this.sprite,

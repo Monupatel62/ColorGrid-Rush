@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { Board } from '../board/Board';
+import { triggerHaptic } from '../utils/feedback';
 
 export class InputManager {
   private scene: Phaser.Scene;
@@ -26,7 +27,10 @@ export class InputManager {
         this.startPointerY  = pointer.y;
         this.startGridCoord = coord;
         const tile = this.board.getTileAt(coord.row, coord.col);
-        if (tile) this.board.handleTileClick(tile);
+        if (tile) {
+          this.board.handleTileClick(tile);
+          triggerHaptic();
+        }
       }
     });
 
@@ -45,7 +49,10 @@ export class InputManager {
         else dirRow = dy > 0 ? 1 : -1;
 
         const tile = this.board.getTileAt(this.startGridCoord.row, this.startGridCoord.col);
-        if (tile) this.board.handleSwipe(tile, dirRow, dirCol);
+        if (tile) {
+          this.board.handleSwipe(tile, dirRow, dirCol);
+          triggerHaptic(28);
+        }
 
         this.isDragging = false;
         this.startGridCoord = null;

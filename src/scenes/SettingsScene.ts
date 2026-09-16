@@ -3,6 +3,7 @@ import { Button } from '../ui/Button';
 import { SaveManager } from '../systems/SaveManager';
 import { AudioManager } from '../systems/AudioManager';
 import { syncCanvasSize } from '../utils/syncCanvasSize';
+import { triggerHaptic } from '../utils/feedback';
 
 export class SettingsScene extends Phaser.Scene {
   constructor() {
@@ -57,7 +58,8 @@ export class SettingsScene extends Phaser.Scene {
     panel.strokeRoundedRect(panelX, panelY, panelW, panelH, 22);
 
     const labelX  = panelX + 28;
-    const toggleX = panelX + panelW - 28;
+    const toggleW = 72;
+    const toggleX = panelX + panelW - 28 - toggleW / 2;
     let rowY      = panelY + Math.round(panelH * 0.11);
     const rowGap  = Math.round(panelH * 0.155);
 
@@ -97,7 +99,7 @@ export class SettingsScene extends Phaser.Scene {
     this.add.text(labelX, y, label, {
       fontFamily: 'Outfit, sans-serif', fontSize: '20px',
       color: '#f8fafc', fontStyle: 'bold'
-    }).setOrigin(0, 0.5);
+    }).setOrigin(0, 0.5).setWordWrapWidth(Math.max(150, toggleX - labelX - 52));
 
     let on = initial;
     const c   = this.add.container(toggleX, y);
@@ -122,6 +124,7 @@ export class SettingsScene extends Phaser.Scene {
       on = !on;
       draw(on);
       AudioManager.getInstance().playClick();
+      triggerHaptic(24);
       onToggle(on);
     });
   }
