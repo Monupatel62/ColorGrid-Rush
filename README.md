@@ -120,7 +120,7 @@ The `dist/` directory contains static web assets (`index.html`, minified CSS/JS 
 
 - **Vercel**: Run `npx vercel` or connect repository.
 - **Netlify**: Run `npx netlify deploy --prod --dir=dist` or drag-and-drop the `dist` folder.
-- **GitHub Pages**: Deploy `dist/` folder to the `gh-pages` branch.
+- **Cloudflare Pages**: Connect the repository to Cloudflare Pages and deploy the `dist/` folder.
 
 ---
 

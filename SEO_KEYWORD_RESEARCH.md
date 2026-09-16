@@ -40,4 +40,4 @@ Date: 2026-09-16
 
 ## Next measurement step
 
-After deployment, verify `https://monupatel62.github.io/ColorGrid-Rush/` and `/how-to-play.html` in Google Search Console. Export queries, impressions, CTR, and average position after 28 days. Replace the provisional priority order with country-specific Keyword Planner and Search Console data.
+After deployment, verify `https://colorgrid-rush.pages.dev/` and `/how-to-play.html` in Google Search Console. Export queries, impressions, CTR, and average position after 28 days. Replace the provisional priority order with country-specific Keyword Planner and Search Console data.
