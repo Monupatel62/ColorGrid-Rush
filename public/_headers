@@ -1,5 +1,6 @@
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
+  X-Robots-Tag: noindex
 
 /robots.txt
   Content-Type: text/plain; charset=utf-8
@@ -7,3 +8,13 @@
 /sw.js
   Content-Type: application/javascript; charset=utf-8
   Cache-Control: no-cache
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+
+/
+  X-Robots-Tag: index, follow
+
+/how-to-play.html
+  X-Robots-Tag: index, follow

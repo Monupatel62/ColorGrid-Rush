@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+Allow: /sitemap.xml
+Allow: /how-to-play.html
+
 Sitemap: https://colorgrid-rush.pages.dev/sitemap.xml
