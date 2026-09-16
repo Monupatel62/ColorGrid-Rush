@@ -6,4 +6,4 @@ Allow: /
 Allow: /sitemap.xml
 Allow: /how-to-play.html
 
-Sitemap: https://colorgrid-rush.pages.dev/sitemap.xml
+Sitemap: https://colorgridr.netlify.app/sitemap.xml
