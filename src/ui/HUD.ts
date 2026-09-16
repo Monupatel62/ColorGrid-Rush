@@ -10,6 +10,7 @@ export interface HUDCallbacks {
 export class HUD extends Phaser.GameObjects.Container {
   private scoreText!:  Phaser.GameObjects.Text;
   private movesText!:  Phaser.GameObjects.Text;
+  private timeText!:   Phaser.GameObjects.Text;
   private movesCircle!: Phaser.GameObjects.Graphics;
   private movesCircleCX: number = 0;
   private movesCircleCY: number = 0;
@@ -76,6 +77,7 @@ export class HUD extends Phaser.GameObjects.Container {
     // Off-screen placeholders (mobile-only fields)
     this.scoreText   = scene.add.text(-9999, -9999, '0', { fontSize: '1px', color: '#000' });
     this.movesText   = scene.add.text(-9999, -9999, '0', { fontSize: '1px', color: '#000' });
+    this.timeText    = scene.add.text(-9999, -9999, '0', { fontSize: '1px', color: '#000' });
     this.movesCircle = scene.add.graphics();
   }
 
@@ -128,6 +130,12 @@ export class HUD extends Phaser.GameObjects.Container {
       color: '#38bdf8', fontStyle: 'bold'
     });
     this.add(this.scoreText);
+
+    this.timeText = scene.add.text(20, 76, `TIME: ${this.formatTime(config.timeLimitSeconds)}`, {
+      fontFamily: 'Outfit, sans-serif', fontSize: isTablet ? '15px' : '13px',
+      color: '#facc15', fontStyle: 'bold'
+    });
+    this.add(this.timeText);
 
     // Star icons — centre of top panel
     const starSz   = isTablet ? 24 : 20;
@@ -299,6 +307,15 @@ export class HUD extends Phaser.GameObjects.Container {
     this.bridge()?.updateMoves(moves);
   }
 
+  public updateTime(seconds: number): void {
+    const roundedSeconds = Math.max(0, Math.ceil(seconds));
+    if (this.timeText) {
+      this.timeText.setText(`TIME: ${this.formatTime(roundedSeconds)}`);
+      this.timeText.setColor(roundedSeconds <= 10 ? '#f87171' : '#facc15');
+    }
+    this.bridge()?.updateTime(roundedSeconds);
+  }
+
   public updateObjectives(objectives: LevelObjective[]): void {
     // In-canvas mobile update
     objectives.forEach((obj) => {
@@ -317,5 +334,11 @@ export class HUD extends Phaser.GameObjects.Container {
   // Type-safe access to the bridge without repeating casts everywhere
   private bridge(): Window['ColorGridBridge'] {
     return (typeof window !== 'undefined') ? window.ColorGridBridge : undefined;
+  }
+
+  private formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const remainder = seconds % 60;
+    return `${minutes}:${remainder.toString().padStart(2, '0')}`;
   }
 }

@@ -6,10 +6,12 @@ export class LevelSystem {
   private movesLeft: number;
   private objectives: LevelObjective[];
   private iceGrid: number[][];
+  private timeLeftSeconds: number;
 
   constructor(config: LevelConfig) {
     this.config = config;
     this.movesLeft = config.moves;
+    this.timeLeftSeconds = config.timeLimitSeconds;
     this.objectives = config.objectives.map((obj) => ({ ...obj, current: 0 }));
 
     // Copy ice grid
@@ -26,6 +28,16 @@ export class LevelSystem {
 
   public getMovesLeft(): number {
     return this.movesLeft;
+  }
+
+  public getTimeLeftSeconds(): number {
+    return this.timeLeftSeconds;
+  }
+
+  public tick(seconds: number): number {
+    if (this.isWon() || this.timeLeftSeconds <= 0) return this.timeLeftSeconds;
+    this.timeLeftSeconds = Math.max(0, this.timeLeftSeconds - Math.max(0, seconds));
+    return this.timeLeftSeconds;
   }
 
   public decrementMoves(): number {
@@ -82,6 +94,6 @@ export class LevelSystem {
   }
 
   public isGameOver(): boolean {
-    return this.movesLeft <= 0 && !this.isWon();
+    return (this.movesLeft <= 0 || this.timeLeftSeconds <= 0) && !this.isWon();
   }
 }

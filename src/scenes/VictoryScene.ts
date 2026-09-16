@@ -3,6 +3,7 @@ import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
 import { AudioManager } from '../systems/AudioManager';
 import { SaveManager } from '../systems/SaveManager';
+import { LEVELS } from '../data/levels';
 
 export interface VictoryData {
   levelId:        number;
@@ -48,7 +49,7 @@ export class VictoryScene extends Phaser.Scene {
     const btn2Y   = top + panelH * 0.85;
     const btn3Y   = top + panelH * 0.94;
 
-    const hasNext = this.victoryData.levelId < 10;
+    const hasNext = this.victoryData.levelId < LEVELS.length;
 
     // ── Title ──
     const title = this.add.text(cx, titleY, 'VICTORY!', {

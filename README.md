@@ -24,9 +24,11 @@ A vibrant, fast-paced casual match-3 puzzle game built from scratch with **Phase
   - *Line + Bomb*: Mega Blaster (clears 3 rows and 3 columns).
   - *Bomb + Bomb*: Mega Bomb (5×5 blast).
   - *Rainbow + Rainbow*: Screen-clearing super explosion.
-- **10 Handcrafted Levels**:
-  - Diverse objectives: Score target, Color gem collection, Ice-clearing obstacles, tight move limits.
-  - 3-star rating system with bonus Rush Time points for leftover moves.
+- **100 Timed Levels**:
+  - A live countdown is enforced in every level; reaching zero ends the run immediately.
+  - Difficulty rises through tighter time and move limits, higher targets, and denser ice layouts.
+  - Diverse objectives: Score target, Color gem collection, and Ice-clearing obstacles.
+  - 3-star rating system with bonus Rush points for leftover moves.
 - **Synthesized Web Audio Engine**: Zero external audio assets! Pure Web Audio API synthesizers create click taps, swooshes, ascending combo chimes, laser blasts, bomb rumbles, victory fanfares, and an upbeat background melody.
 - **Safe Save System**: Persistent local storage saves unlocked levels, stars, high scores, and settings with corruption recovery.
 - **Responsive Portrait Design**: Scaled automatically for mobile screens, tablets, and desktop browsers.

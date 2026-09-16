@@ -9,7 +9,7 @@
   ════════════════════════════════════════════════════════ -->
   <title>ColorGrid Rush: Free Match-3 Puzzle Game Online</title>
   <meta name="description"
-      content="Play ColorGrid Rush, a free online match-3 puzzle game. Match colorful gems, trigger combo blasts, and clear 10 handcrafted levels on desktop or mobile." />
+      content="Play ColorGrid Rush, a free online match-3 puzzle game. Match colorful gems, trigger combo blasts, and beat 100 timed levels on desktop or mobile." />
   <meta name="author"       content="ColorGrid Rush" />
   <meta name="robots"       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color"  content="#0d1117" />
@@ -24,7 +24,7 @@
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://monupatel62.github.io/ColorGrid-Rush/" />
   <meta property="og:title"       content="ColorGrid Rush: Free Match-3 Puzzle Game" />
-  <meta property="og:description" content="Match colorful gems, create explosive combos, and clear 10 handcrafted levels in your browser." />
+  <meta property="og:description" content="Match colorful gems, create explosive combos, and beat 100 timed levels in your browser." />
   <meta property="og:image"       content="https://monupatel62.github.io/ColorGrid-Rush/og-image.svg" />
   <meta property="og:image:alt"   content="ColorGrid Rush colorful gem puzzle board" />
   <meta property="og:locale"      content="en_US" />
@@ -36,7 +36,7 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:url"         content="https://monupatel62.github.io/ColorGrid-Rush/" />
   <meta name="twitter:title"       content="ColorGrid Rush: Free Match-3 Puzzle Game" />
-  <meta name="twitter:description" content="Match colorful gems, create explosive combos, and clear 10 handcrafted levels in your browser." />
+  <meta name="twitter:description" content="Match colorful gems, create explosive combos, and beat 100 timed levels in your browser." />
   <meta name="twitter:image"       content="https://monupatel62.github.io/ColorGrid-Rush/og-image.svg" />
   <meta name="twitter:image:alt"   content="ColorGrid Rush game screenshot" />
 
@@ -63,7 +63,7 @@
     "@type": "VideoGame",
     "name": "ColorGrid Rush",
     "alternateName": "ColorGrid Rush Match-3",
-    "description": "ColorGrid Rush is a free online match-3 puzzle game. Match colorful gems, trigger explosive combos, blast special tiles, and clear 10 handcrafted levels on desktop or mobile.",
+    "description": "ColorGrid Rush is a free online match-3 puzzle game. Match colorful gems, trigger explosive combos, blast special tiles, and beat 100 timed levels on desktop or mobile.",
     "url": "https://monupatel62.github.io/ColorGrid-Rush/",
     "image": "https://monupatel62.github.io/ColorGrid-Rush/og-image.svg",
     "genre": ["Puzzle", "Casual", "Match-3"],
@@ -86,7 +86,7 @@
     "featureList": [
       "8 by 8 match-3 board",
       "Special tiles and combo blasts",
-      "10 handcrafted puzzle levels",
+      "100 timed puzzle levels",
       "Desktop and Android support"
     ]
   }
@@ -485,7 +485,7 @@
   <noscript>
     <main>
       <h1>ColorGrid Rush: Free Match-3 Puzzle Game</h1>
-      <p>Match colorful gems, trigger special tile combos, and complete 10 handcrafted puzzle levels.</p>
+          <p>Match colorful gems, trigger special tile combos, and beat 100 timed puzzle levels.</p>
       <p>JavaScript is required to play ColorGrid Rush in your browser.</p>
     </main>
   </noscript>
@@ -514,6 +514,8 @@
         <div class="panel-card">
           <div class="panel-card-label">Moves Left</div>
           <div class="panel-card-value" id="desktop-moves">—</div>
+          <div class="panel-card-label">Time Left</div>
+          <div class="panel-card-value gold" id="desktop-time">—</div>
         </div>
         <div class="panel-card">
           <div class="panel-card-label">Stars</div>
@@ -638,6 +640,16 @@
         if (el) {
           el.textContent = moves;
           el.className = 'panel-card-value ' + (Number(moves) <= 5 ? 'red' : '');
+        }
+      },
+      updateTime: function(seconds) {
+        var el = document.getElementById('desktop-time');
+        if (el) {
+          var value = Math.max(0, Number(seconds));
+          var mins = Math.floor(value / 60);
+          var secs = String(value % 60).padStart(2, '0');
+          el.textContent = mins + ':' + secs;
+          el.className = 'panel-card-value ' + (value <= 10 ? 'red' : 'gold');
         }
       },
       updateStars: function(stars) {

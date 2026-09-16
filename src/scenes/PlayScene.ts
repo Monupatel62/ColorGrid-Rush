@@ -18,6 +18,7 @@ declare global {
       updateScore:      (s: number) => void;
       updateStars:      (s: number) => void;
       updateMoves:      (m: number) => void;
+      updateTime:       (s: number) => void;
       updateLevel:      (id: number, name: string) => void;
       updateObjectives: (o: object[]) => void;
       updateBest:       (s: number) => void;
@@ -42,6 +43,7 @@ export class PlayScene extends Phaser.Scene {
   private hud!:            HUD;
   private inputManager!:   InputManager;
   private isLevelEnding:   boolean = false;
+  private countdownEvent:  Phaser.Time.TimerEvent | null = null;
 
   constructor() {
     super({ key: 'PlayScene' });
@@ -119,6 +121,16 @@ export class PlayScene extends Phaser.Scene {
 
     this.board.init(this.levelConfig);
 
+    this.countdownEvent = this.time.addEvent({
+      delay: 1000,
+      loop: true,
+      callback: () => {
+        const seconds = this.levelSystem.tick(1);
+        this.hud.updateTime(seconds);
+        this.checkGameStatus();
+      }
+    });
+
     // ── 5. Input ──
     this.inputManager = new InputManager(this, this.board);
 
@@ -134,6 +146,7 @@ export class PlayScene extends Phaser.Scene {
     if (window.ColorGridBridge) {
       window.ColorGridBridge.updateLevel(this.levelConfig.id, this.levelConfig.name);
       window.ColorGridBridge.updateMoves(this.levelConfig.moves);
+      window.ColorGridBridge.updateTime(this.levelConfig.timeLimitSeconds);
       window.ColorGridBridge.updateScore(0);
       window.ColorGridBridge.updateStars(0);
       window.ColorGridBridge.updateObjectives(this.levelSystem.getObjectives());
@@ -311,7 +324,8 @@ export class PlayScene extends Phaser.Scene {
       this.scene.launch('GameOverScene', {
         levelId:    this.levelConfig.id,
         score:      this.scoreSystem.getScore(),
-        objectives: this.levelSystem.getObjectives()
+        objectives: this.levelSystem.getObjectives(),
+        timeExpired: this.levelSystem.getTimeLeftSeconds() <= 0
       });
     });
   }
@@ -322,6 +336,8 @@ export class PlayScene extends Phaser.Scene {
   }
 
   public shutdown(): void {
+    this.countdownEvent?.remove(false);
+    this.countdownEvent = null;
     if (this.inputManager) this.inputManager.destroy();
     // Clear bridge callbacks to avoid ghost references after scene change
     if (window.ColorGridBridge) {

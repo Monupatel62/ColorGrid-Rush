@@ -8,6 +8,7 @@ export interface GameOverData {
   levelId:    number;
   score:      number;
   objectives: LevelObjective[];
+  timeExpired?: boolean;
 }
 
 export class GameOverScene extends Phaser.Scene {
@@ -49,7 +50,7 @@ export class GameOverScene extends Phaser.Scene {
       `${Math.max(min, Math.round(ideal * (panelH / 620)))}px`;
 
     // ── Title ──
-    this.add.text(cx, titleY, 'OUT OF MOVES', {
+    this.add.text(cx, titleY, this.gameOverData.timeExpired ? 'OUT OF TIME' : 'OUT OF MOVES', {
       fontFamily: 'Outfit, sans-serif',
       fontSize:   sp(40, 26),
       color:      '#ef4444',

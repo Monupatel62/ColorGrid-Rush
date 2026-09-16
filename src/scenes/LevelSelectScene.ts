@@ -6,6 +6,8 @@ import { AudioManager } from '../systems/AudioManager';
 import { syncCanvasSize } from '../utils/syncCanvasSize';
 
 export class LevelSelectScene extends Phaser.Scene {
+  private page: number = 0;
+
   constructor() {
     super({ key: 'LevelSelectScene' });
   }
@@ -23,6 +25,9 @@ export class LevelSelectScene extends Phaser.Scene {
     const save            = SaveManager.getInstance();
     const highestUnlocked = save.getHighestUnlockedLevel();
     const totalStars      = save.getTotalStars();
+    const pageSize        = 10;
+    const totalPages      = Math.ceil(LEVELS.length / pageSize);
+    this.page              = Math.min(this.page, totalPages - 1);
     const isDesktop       = window.innerWidth >= 960;
     const isTablet        = window.innerWidth >= 600 && window.innerWidth < 960;
     const cx              = W / 2;
@@ -65,7 +70,7 @@ export class LevelSelectScene extends Phaser.Scene {
       color:      '#ffffff', fontStyle: '900'
     }).setOrigin(0.5).setDepth(6);
 
-    this.add.text(W - (isDesktop ? 24 : 16), headerH / 2, `★ ${totalStars}/30`, {
+    this.add.text(W - (isDesktop ? 24 : 16), headerH / 2, `★ ${totalStars}/${LEVELS.length * 3}`, {
       fontFamily: 'Outfit, sans-serif',
       fontSize:   isDesktop ? '20px' : '17px',
       color: '#fef08a', fontStyle: 'bold'
@@ -81,7 +86,7 @@ export class LevelSelectScene extends Phaser.Scene {
     const startY  = headerH + pad + cardH / 2;
 
     // ── Level cards ──
-    LEVELS.forEach((level, idx) => {
+    LEVELS.slice(this.page * pageSize, (this.page + 1) * pageSize).forEach((level, idx) => {
       const col = idx % cols;
       const row = Math.floor(idx / cols);
       const x   = startX + col * (cardW + pad);
@@ -97,6 +102,23 @@ export class LevelSelectScene extends Phaser.Scene {
         isUnlocked, starsEarned, highScore, isDesktop, isTablet
       );
     });
+
+    const pageY = H - (isDesktop ? 30 : 24);
+    if (this.page > 0) {
+      new Button(this, 70, pageY, '← PREV', () => {
+        this.page--;
+        this.scene.restart();
+      }, { width: 110, height: 36, fontSize: '14px', primaryColor: 0x334155, hoverColor: 0x475569 });
+    }
+    this.add.text(cx, pageY, `${this.page + 1} / ${totalPages}`, {
+      fontFamily: 'Outfit, sans-serif', fontSize: '14px', color: '#94a3b8', fontStyle: 'bold'
+    }).setOrigin(0.5).setDepth(6);
+    if (this.page < totalPages - 1) {
+      new Button(this, W - 70, pageY, 'NEXT →', () => {
+        this.page++;
+        this.scene.restart();
+      }, { width: 110, height: 36, fontSize: '14px', primaryColor: 0x0284c7, hoverColor: 0x0ea5e9 });
+    }
   }
 
   private createLevelCard(
