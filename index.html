@@ -588,6 +588,14 @@
 
   <script type="module" src="/src/main.ts"></script>
 
+  <!-- Service Worker (push notification ads) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .catch(function(err) { console.warn('SW registration failed:', err); });
+    }
+  </script>
+
   <script>
     /* ════════════════════════════════════════════════════════
        LAYOUT BRIDGE
