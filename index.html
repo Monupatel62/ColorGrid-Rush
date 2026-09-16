@@ -599,11 +599,30 @@
     }
   </script>
 
-  <!-- Adsterra Onclick (Popunder) -->
-  <script>(function(s){s.dataset.zone='11814723',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-  <!-- Adsterra In-Page Push (Banner) -->
+  <!-- Adsterra In-Page Push (Banner) — always active -->
   <script>(function(s){s.dataset.zone='11814735',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <!-- Adsterra Onclick (Popunder) — skips first visit, then 40% random chance -->
+  <script>
+    (function() {
+      var key        = 'cgr_visits';
+      var visits     = parseInt(localStorage.getItem(key) || '0', 10);
+      var newVisits  = visits + 1;
+      localStorage.setItem(key, newVisits);
+
+      // First visit — never show popunder
+      if (visits === 0) return;
+
+      // 2nd visit onwards — 40% random chance
+      if (Math.random() > 0.40) return;
+
+      // Load Onclick script dynamically
+      (function(s){
+        s.dataset.zone = '11814723';
+        s.src          = 'https://al5sm.com/tag.min.js';
+      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+    })();
+  </script>
 
   <script>
     /* ════════════════════════════════════════════════════════
